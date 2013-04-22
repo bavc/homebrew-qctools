@@ -47,6 +47,7 @@ class Ffmpeg < Formula
 
   def install
     args = ["--prefix=#{prefix}",
+            "--extra-version=BAVC-qctools",
             "--enable-shared",
             "--enable-pthreads",
             "--enable-gpl",
