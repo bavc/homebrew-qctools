@@ -12,10 +12,10 @@ BAVC-branch of FFmpeg
 ---------------------
 This ffmpeg branch that includes an in-progress 'values' filter for analyzing raw video data. This can be install `brew install --HEAD bavc/qctools/ffmpeg`. If ffmpeg is already installed you may have to run `brew rm ffmpeg` first. Please note that there is no stable release of this branch so installation is head-only.
 
-More info:
-
-BAVC Homepage
-http://bavc.org
+More info
+---------
+BAVC
+http://bavc.org http://twitter.com/BAVCPreserve
 
 BAVC: Quality Control Tools for Video Preservation
 http://bavc.org/qctools
