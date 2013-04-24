@@ -10,7 +10,11 @@ To tap these formulas in homebrew please run `brew tap bavc/qctools` and the run
 
 BAVC-branch of FFmpeg
 ---------------------
-This ffmpeg branch that includes an in-progress 'values' filter for analyzing raw video data. This can be install `brew install --HEAD bavc/qctools/ffmpeg`. If ffmpeg is already installed you may have to run `brew rm ffmpeg` first. Please note that there is no stable release of this branch so installation is head-only.
+This ffmpeg branch that includes an in-progress 'values' filter for analyzing raw video data. This can be install with `brew install --HEAD bavc/qctools/ffmpeg`. If ffmpeg is already installed you may have to run `brew rm ffmpeg` first. Please note that there is no stable release of this branch yet so installation is head-only.
+
+analyzeplay
+-----------
+This can be install with `brew install --HEAD analyzeplay`. Please note that there is no stable release of this branch yet so installation is head-only.
 
 More info
 ---------
