@@ -104,11 +104,8 @@ class Ffmpeg < Formula
     end
 
     system "make install"
-
-    if build.include? 'with-tools'
-      system "make alltools"
-      bin.install Dir['tools/*'].select {|f| File.executable? f}
-    end
+    system "make alltools"
+    bin.install Dir['tools/*'].select {|f| File.executable? f}
   end
 
 end
