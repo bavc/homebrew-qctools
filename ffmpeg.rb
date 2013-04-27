@@ -42,7 +42,7 @@ class Ffmpeg < Formula
   depends_on 'schroedinger' => :optional
   depends_on 'fdk-aac' => :optional
   depends_on 'opus' => :optional
-  depends_on 'frei0r' => :recommended
+  depends_on 'frei0r' => :optional
   depends_on 'libcaca' => :recommended
 
   def install
