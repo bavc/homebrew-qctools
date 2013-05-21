@@ -16,6 +16,10 @@ analyzeplay
 -----------
 This can be install with `brew install --HEAD analyzeplay`. Please note that there is no stable release of this branch yet so installation is head-only.
 
+analyzeplot
+-----------
+This can be install with `brew install --HEAD analyzeplot`. Please note that there is no stable release of this branch yet so installation is head-only.
+
 More info
 ---------
 BAVC
