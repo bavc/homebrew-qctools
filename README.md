@@ -6,7 +6,7 @@ These formula support BAVC's projects underway to design quality control tools a
 
 How to install this stuff?
 --------------------------
-To tap these formulas in homebrew please run `brew tap bavc/qctools` and the run `brew install <formula>` to install from the formulas below.
+Firstly run `brew update`. Then to tap these formulas in homebrew please run `brew tap bavc/qctools` and the run `brew install <formula>` to install from the formulas below.
 
 BAVC-branch of FFmpeg
 ---------------------
