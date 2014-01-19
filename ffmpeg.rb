@@ -132,19 +132,4 @@ class Ffmpeg < Formula
     end
   end
 
-  end
-
-  __END__
-  diff --git a/libavfilter/vf_drawtext.c b/libavfilter/vf_drawtext.c
-  index 2358e35..4c08092 100644
-  --- a/libavfilter/vf_drawtext.c
-  +++ b/libavfilter/vf_drawtext.c
-  @@ -48,7 +48,6 @@
-   #include "video.h"
- 
-   #include <ft2build.h>
-  -#include <freetype/config/ftheader.h>
-   #include FT_FREETYPE_H
-   #include FT_GLYPH_H
-   #if CONFIG_FONTCONFIG
-
+end
