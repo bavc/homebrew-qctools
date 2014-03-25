@@ -5,16 +5,6 @@ class Ffmpeg < Formula
   homepage 'http://github.com/bavc/FFmpeg'
   head 'git://github.com/bavc/FFmpeg.git'
 
-  # This is actually the new stable, not a devel release,
-  # but not everything builds with it yet - notably gpac
-  devel do
-    url 'http://ffmpeg.org/releases/ffmpeg-2.1.1.tar.bz2'
-    sha1 'e7a5b2d7f702c4e9ca69e23c6d3527f93de0d1bd'
-
-    depends_on 'libbluray' => :optional
-    depends_on 'libquvi' => :optional
-  end
-
   option "without-x264", "Disable H.264 encoder"
   option "without-lame", "Disable MP3 encoder"
   option "without-xvid", "Disable Xvid MPEG-4 video encoder"
@@ -56,15 +46,10 @@ class Ffmpeg < Formula
   depends_on 'opus' => :optional
   depends_on 'frei0r' => :optional
   depends_on 'libcaca' => :optional
-
-  # Fix build against freetype 2.5.1
-  # http://ffmpeg.org/pipermail/ffmpeg-devel/2013-November/151404.html
-  def patches; DATA; end unless build.head?
+  depends_on 'libbluray' => :optional
+  depends_on 'libquvi' => :optional
 
   def install
-    # Remove when fix for freetype 2.5.1+ is incorporated upstream
-    inreplace 'configure', 'ft2build.h freetype/freetype.h', 'ft2build.h freetype.h'
-
     args = ["--prefix=#{prefix}",
             "--extra-version=BAVC-qctools",
             "--enable-shared",
@@ -94,7 +79,7 @@ class Ffmpeg < Formula
     args << "--enable-libopencore-amrnb" << "--enable-libopencore-amrwb" if build.with? 'opencore-amr'
     args << "--enable-libvo-aacenc" if build.with? 'libvo-aacenc'
     args << "--enable-libass" if build.with? 'libass'
-    args << "--enable-ffplay" if build.include? 'with-ffplay'
+    args << "--enable-ffplay" if build.with? "ffplay"
     args << "--enable-libspeex" if build.with? 'speex'
     args << '--enable-libschroedinger' if build.with? 'schroedinger'
     args << "--enable-libfdk-aac" if build.with? 'fdk-aac'
@@ -116,19 +101,19 @@ class Ffmpeg < Formula
     system "./configure", *args
 
     if MacOS.prefer_64_bit?
-    inreplace 'config.mak' do |s|
-      shflags = s.get_make_var 'SHFLAGS'
-      if shflags.gsub!(' -Wl,-read_only_relocs,suppress', '')
-      s.change_make_var! 'SHFLAGS', shflags
+      inreplace 'config.mak' do |s|
+        shflags = s.get_make_var 'SHFLAGS'
+        if shflags.gsub!(' -Wl,-read_only_relocs,suppress', '')
+          s.change_make_var! 'SHFLAGS', shflags
+        end
       end
-    end
     end
 
     system "make install"
 
-    if build.include? 'with-tools'
-    system "make alltools"
-    bin.install Dir['tools/*'].select {|f| File.executable? f}
+    if build.with? "tools"
+      system "make alltools"
+      bin.install Dir['tools/*'].select {|f| File.executable? f}
     end
   end
 
